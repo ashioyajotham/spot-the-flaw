@@ -1,0 +1,16 @@
+{
+  "proof_id": "bias_variance_correct_001",
+  "title": "Bias-Variance Decomposition (Correct)",
+  "domain": "ml/statistics",
+  "steps": [
+    {
+      "step_number": 1,
+      "content": "E[(y - \hat{f}(x))^2] = E[y^2] - 2E[y\hat{f}(x)] + E[\hat{f}(x)^2]"
+    },
+    {
+      "step_number": 2,
+      "content": "= Var(y) + (E[y] - E[\hat{f}(x)])^2 + Var(\hat{f}(x)) - 2Cov(y, \hat{f}(x))"
+    }
+  ]
+}
+

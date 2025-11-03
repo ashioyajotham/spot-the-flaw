@@ -1,0 +1,18 @@
+{
+  "proof_id": "bias_variance_flawed_001",
+  "title": "Bias-Variance Decomposition",
+  "domain": "ml/statistics",
+  "steps": [
+    {
+      "step_number": 1,
+      "content": "E[(y - f̂(x))^2] = E[y^2] - E[f̂(x)^2]",
+      "note": "Intentionally missing cross term"
+    },
+    {
+      "step_number": 2,
+      "content": "= Var(y) + Var(f̂(x))",
+      "note": "Skips bias term and covariance considerations"
+    }
+  ]
+}
+

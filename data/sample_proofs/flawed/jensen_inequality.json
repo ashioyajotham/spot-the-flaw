@@ -1,0 +1,18 @@
+{
+  "proof_id": "jensen_flawed_001",
+  "title": "Jensen's Inequality Application",
+  "domain": "probability",
+  "steps": [
+    {
+      "step_number": 1,
+      "content": "E[g(X)] >= g(E[X]) for any function g",
+      "note": "Misses convexity assumption and reverses inequality for concave"
+    },
+    {
+      "step_number": 2,
+      "content": "Set g(x) = -x^2 which is convex",
+      "note": "-x^2 is concave, not convex"
+    }
+  ]
+}
+

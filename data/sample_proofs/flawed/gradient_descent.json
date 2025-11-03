@@ -1,0 +1,19 @@
+{
+  "proof_id": "gd_convergence_flawed_001",
+  "title": "Convergence of Gradient Descent",
+  "domain": "optimization",
+  "assumptions": ["f is L-smooth", "step size eta = 1/L"],
+  "steps": [
+    {
+      "step_number": 1,
+      "content": "f(x_{k+1}) <= f(x_k) - L ||\nabla f(x_k)||^2",
+      "note": "Coefficient is incorrect under L-smoothness"
+    },
+    {
+      "step_number": 2,
+      "content": "Thus f decreases to the global minimum for any nonconvex f",
+      "note": "Overclaiming beyond convex assumptions"
+    }
+  ]
+}
+

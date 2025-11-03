@@ -1,0 +1,10 @@
+Analyze the following mathematical proof. Return only a JSON object with keys:
+  proof_id (string), overall_status (one of: correct, contains_errors, unclear),
+  steps (array of step objects), summary (string), corrected_proof (string).
+
+Each step object must include: step_number (int), content (string), status (correct|questionable|error),
+issue (string), correction (string), reasoning (string).
+
+Proof to analyze (JSON):
+{proof_json}
+
