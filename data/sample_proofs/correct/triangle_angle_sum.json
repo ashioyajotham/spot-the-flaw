@@ -1,0 +1,30 @@
+{
+  "proof_id": "geometry_triangle_sum_correct_001",
+  "title": "Triangle Angle Sum Theorem (Correct)",
+  "domain": "euclidean_geometry",
+  "theorem": "The sum of interior angles in any triangle equals 180°",
+  "given": "Triangle ABC with interior angles ∠A = α, ∠B = β, ∠C = γ",
+  "steps": [
+    {
+      "step_number": 1,
+      "content": "Construct line DE through vertex A such that DE || BC"
+    },
+    {
+      "step_number": 2,
+      "content": "Since DE || BC and AB is a transversal, alternate interior angles are equal: ∠DAB = ∠ABC = β"
+    },
+    {
+      "step_number": 3,
+      "content": "Since DE || BC and AC is a transversal, alternate interior angles are equal: ∠EAC = ∠ACB = γ"
+    },
+    {
+      "step_number": 4,
+      "content": "Angles DAB, BAC, and EAC form a straight angle along line DE, so ∠DAB + ∠BAC + ∠EAC = 180°"
+    },
+    {
+      "step_number": 5,
+      "content": "Substituting: β + α + γ = 180°, which proves the triangle angle sum theorem"
+    }
+  ]
+}
+

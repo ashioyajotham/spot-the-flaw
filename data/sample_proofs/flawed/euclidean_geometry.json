@@ -1,0 +1,30 @@
+{
+  "proof_id": "geometry_parallel_lines_flawed_001",
+  "title": "Alternate Interior Angles with Parallel Lines",
+  "domain": "euclidean_geometry",
+  "theorem": "If two parallel lines are cut by a transversal, then alternate interior angles are equal",
+  "given": "Lines l and m are parallel. Transversal t intersects l at point A and m at point B.",
+  "steps": [
+    {
+      "step_number": 1,
+      "content": "Since l || m, corresponding angles are equal by definition",
+      "note": "Correct premise"
+    },
+    {
+      "step_number": 2,
+      "content": "Angle 1 (on line l, above transversal) equals Angle 2 (on line m, above transversal)",
+      "note": "Mixing up corresponding and alternate interior angles"
+    },
+    {
+      "step_number": 3,
+      "content": "By vertical angles, Angle 2 equals Angle 3 (on line m, below transversal)",
+      "note": "This step is correct but builds on incorrect step 2"
+    },
+    {
+      "step_number": 4,
+      "content": "Therefore, Angle 1 equals Angle 3, so alternate interior angles are equal",
+      "note": "Conclusion follows from flawed reasoning chain"
+    }
+  ]
+}
+

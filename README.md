@@ -16,7 +16,7 @@ Taken together, these works suggest that strengthening mathematical reasoning is
 
 ## Aim
 
-- Provide an interactive artifact to inspect and stress-test model reasoning on mathematical proofs relevant to ML (bias–variance, optimization convergence, Jensen applications, information-theoretic bounds).
+- Provide an interactive artifact to inspect and stress-test model reasoning on mathematical proofs across domains: ML/probability (bias–variance, optimization convergence, Jensen applications, information-theoretic bounds) and Euclidean geometry (parallel lines, triangle properties, circle theorems).
 - Localize errors at the step level, label them (correct/questionable/error), and propose minimal corrections with justification.
 - Enable systematic prompting, ablations, and offline reproducibility (mock mode) to support research iteration and workshop use.
 
@@ -105,6 +105,8 @@ Select a bundled sample or upload a proof JSON to inspect stepwise labels, issue
 
 ```bash
 python src/main.py --proof data/sample_proofs/flawed/bias_variance.json
+# Or try a geometry example:
+python src/main.py --proof data/sample_proofs/flawed/euclidean_geometry.json
 ```
 
 Writes a structured analysis JSON for downstream evaluation. (Module form is optional and not required.)
@@ -119,7 +121,7 @@ Writes a structured analysis JSON for downstream evaluation. (Module form is opt
 - Label consistency: agreement rates across multiple runs/settings for the same proof.
 - Minimality of corrections: edit distance between original and corrected steps.
 - Sensitivity: inject controlled perturbations (notation swaps, missing terms) and measure detection.
-- Coverage: diversify topics (optimization, information theory, probabilistic inequalities) and difficulty.
+- Coverage: diversify topics (optimization, information theory, probabilistic inequalities, Euclidean geometry) and difficulty.
 
 ## Limitations
 

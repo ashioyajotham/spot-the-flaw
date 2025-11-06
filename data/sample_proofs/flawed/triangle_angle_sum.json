@@ -1,0 +1,30 @@
+{
+  "proof_id": "geometry_triangle_sum_flawed_001",
+  "title": "Triangle Angle Sum Theorem",
+  "domain": "euclidean_geometry",
+  "theorem": "The sum of interior angles in any triangle equals 180°",
+  "given": "Triangle ABC with angles α, β, γ",
+  "steps": [
+    {
+      "step_number": 1,
+      "content": "Draw a line through vertex A parallel to side BC",
+      "note": "Valid construction"
+    },
+    {
+      "step_number": 2,
+      "content": "By alternate interior angles, angle at A equals the angle formed by the parallel line and side AB",
+      "note": "Incorrect: alternate interior angles require a transversal, and the reasoning is imprecise"
+    },
+    {
+      "step_number": 3,
+      "content": "Similarly, the angle at A also equals the angle formed with side AC",
+      "note": "This contradicts step 2 - cannot have two different equalities for the same angle"
+    },
+    {
+      "step_number": 4,
+      "content": "Since the parallel line creates a straight angle (180°), we have α + β + γ = 180°",
+      "note": "The conclusion is correct but the proof chain is flawed"
+    }
+  ]
+}
+

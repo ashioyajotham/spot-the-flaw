@@ -1,0 +1,30 @@
+{
+  "proof_id": "geometry_circle_theorem_flawed_001",
+  "title": "Inscribed Angle Theorem",
+  "domain": "euclidean_geometry",
+  "theorem": "An inscribed angle is half the measure of its intercepted arc",
+  "given": "Circle with center O. Points A, B, C on circle. ∠ACB is inscribed, arc AB is intercepted",
+  "steps": [
+    {
+      "step_number": 1,
+      "content": "Draw radii OA and OB to form central angle ∠AOB",
+      "note": "Valid construction"
+    },
+    {
+      "step_number": 2,
+      "content": "Triangle OAC is isosceles, so ∠OAC = ∠OCA",
+      "note": "Incorrect: O, A, C are not necessarily collinear or form an isosceles triangle in the way stated"
+    },
+    {
+      "step_number": 3,
+      "content": "Similarly, triangle OBC is isosceles, so ∠OBC = ∠OCB",
+      "note": "Same issue as step 2"
+    },
+    {
+      "step_number": 4,
+      "content": "Therefore, ∠ACB = ∠AOB / 2",
+      "note": "Conclusion is correct but proof is flawed"
+    }
+  ]
+}
+
