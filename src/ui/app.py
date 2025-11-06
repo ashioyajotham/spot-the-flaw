@@ -4,7 +4,15 @@ from typing import Any, Dict, List
 
 import streamlit as st
 
-from ..proof_analyzer import analyze_proof, load_json_file
+# Support running via Streamlit (script execution) and as a module
+try:
+    from ..proof_analyzer import analyze_proof, load_json_file  # type: ignore
+except Exception:
+    import sys
+    project_root = pathlib.Path(__file__).resolve().parents[2]
+    if str(project_root) not in sys.path:
+        sys.path.insert(0, str(project_root))
+    from src.proof_analyzer import analyze_proof, load_json_file  # type: ignore
 
 
 PROJECT_ROOT = pathlib.Path(__file__).resolve().parents[2]
