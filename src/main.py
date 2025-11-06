@@ -2,7 +2,19 @@ import argparse
 from pathlib import Path
 from typing import Any, Dict
 
-from .proof_analyzer import analyze_proof, load_json_file, save_json_file
+# Support both `python -m src.main` and `python src/main.py`
+try:
+    # Module form
+    from .proof_analyzer import analyze_proof, load_json_file, save_json_file  # type: ignore
+except Exception:
+    # Script form
+    import sys
+    import pathlib
+
+    project_root = pathlib.Path(__file__).resolve().parent.parent
+    if str(project_root) not in sys.path:
+        sys.path.insert(0, str(project_root))
+    from src.proof_analyzer import analyze_proof, load_json_file, save_json_file  # type: ignore
 
 
 def main() -> None:

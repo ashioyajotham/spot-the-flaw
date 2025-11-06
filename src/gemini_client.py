@@ -17,7 +17,7 @@ class GeminiClient:
         load_dotenv()
         self._mock_mode = os.getenv("GEMINI_MOCK", "0") == "1"
         self._api_key = os.getenv("GEMINI_API_KEY")
-        self._model_name = model_name or os.getenv("GEMINI_MODEL_NAME") or "gemini-1.5-pro"
+        self._model_name = model_name or os.getenv("GEMINI_MODEL_NAME") or "gemini-2.5-pro"
 
         if not self._mock_mode:
             try:
@@ -30,10 +30,9 @@ class GeminiClient:
                 raise RuntimeError("GEMINI_API_KEY not set and GEMINI_MOCK is disabled.")
             genai.configure(api_key=self._api_key)
             self._genai = genai
-            self._model = genai.GenerativeModel(self._model_name)
         else:
             self._genai = None
-            self._model = None
+        self._model = None
 
     def analyze(self, system_prompt: str, user_prompt: str) -> Dict[str, Any]:
         """Send composed prompts and return parsed JSON dict.
@@ -60,13 +59,9 @@ class GeminiClient:
                 "corrected_proof": "...",
             }
 
-        # Live mode
-        response = self._model.generate_content(
-            [
-                {"role": "system", "parts": [system_prompt]},
-                {"role": "user", "parts": [user_prompt]},
-            ]
-        )
+        # Live mode: attach system instructions via model config; send only user content
+        model = self._genai.GenerativeModel(self._model_name, system_instruction=system_prompt)  # type: ignore[attr-defined]
+        response = model.generate_content(user_prompt)
         text = getattr(response, "text", None) or getattr(response, "candidates", None)
         if hasattr(response, "text"):
             raw = response.text

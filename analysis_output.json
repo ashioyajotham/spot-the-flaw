@@ -1,0 +1,24 @@
+{
+  "proof_id": "bias_variance_flawed_001",
+  "overall_status": "contains_errors",
+  "steps": [
+    {
+      "step_number": 1,
+      "content": "E[(y - f̂(x))^2] = E[y^2] - E[f̂(x)^2]",
+      "status": "error",
+      "issue": "Incorrect expansion of the squared term. The cross-term `-2E[y f̂(x)]` is missing, and the sign of the second term is wrong.",
+      "correction": "E[(y - f̂(x))^2] = E[y^2 - 2y f̂(x) + f̂(x)^2] = E[y^2] - 2E[y f̂(x)] + E[f̂(x)^2]",
+      "reasoning": "The expansion of `(a-b)^2` is `a^2 - 2ab + b^2`. The expectation `E` is a linear operator, so `E[A+B] = E[A] + E[B]`."
+    },
+    {
+      "step_number": 2,
+      "content": "= Var(y) + Var(f̂(x))",
+      "status": "error",
+      "issue": "This step does not logically follow from the (incorrect) previous step and presents an incorrect final decomposition. It omits the bias term and misrepresents the irreducible error as `Var(y)`.",
+      "correction": "The correct decomposition is `Bias(f̂(x))^2 + Var(f̂(x)) + σ^2`.",
+      "reasoning": "The derivation is non-sequitur. The expected squared error decomposes into three distinct components: squared bias (`Bias(f̂(x))^2`), variance (`Var(f̂(x))`), and irreducible error (`σ^2`). This step incorrectly relates expectations of squares to variances and omits the bias component."
+    }
+  ],
+  "summary": "The proof is fundamentally flawed from the first step. It begins with an incorrect algebraic expansion of the squared error, omitting the cross-term and using an incorrect sign. The second step is a non-sequitur that presents an incorrect final formula, omitting the crucial bias term and misstating the irreducible error. The entire line of reasoning is invalid.",
+  "corrected_proof": "Let the true model be `y = f(x) + ε`, where `E[ε]=0` and `Var(ε)=σ^2`. The term `f̂(x)` is a random variable dependent on the training data. For brevity, let `f=f(x)` and `f̂=f̂(x)`. The expectation `E` is taken over both the training data and the noise `ε`.\n\n1. Decompose the error into reducible and irreducible parts.\n`E[(y - f̂)^2] = E[(f + ε - f̂)^2]`\n`= E[(f - f̂)^2 + 2ε(f - f̂) + ε^2]`\nBy linearity of expectation:\n`= E[(f - f̂)^2] + 2E[ε(f - f̂)] + E[ε^2]`\nSince the noise `ε` is independent of the training data (and thus of `f̂`) and `f` is fixed, `E[ε(f - f̂)] = E[ε]E[f - f̂] = 0`. Also, `E[ε^2] = Var(ε) + (E[ε])^2 = σ^2`.\n`= E[(f - f̂)^2] + σ^2` (Irreducible Error)\n\n2. Decompose the reducible error `E[(f - f̂)^2]`.\nAdd and subtract `E[f̂]` inside the square:\n`E[(f - f̂)^2] = E[(f - E[f̂] + E[f̂] - f̂)^2]`\nExpand the square, treating `(f - E[f̂])` as term `A` and `(E[f̂] - f̂)` as term `B`:\n`= E[(f - E[f̂])^2 + (E[f̂] - f̂)^2 + 2(f - E[f̂])(E[f̂] - f̂)]`\n`= E[(f - E[f̂])^2] + E[(E[f̂] - f̂)^2] + 2E[(f - E[f̂])(E[f̂] - f̂)]`\nThe term `(f - E[f̂])` is a constant with respect to the expectation over the training data.\n`E[(f - E[f̂])^2] = (f - E[f̂])^2 = Bias(f̂)^2`\n`E[(E[f̂] - f̂)^2] = Var(f̂)`\nThe cross term is zero: `2E[(f - E[f̂])(E[f̂] - f̂)] = 2(f - E[f̂])E[E[f̂] - f̂] = 2(f - E[f̂])(E[f̂] - E[f̂]) = 0`.\nSo, `E[(f - f̂)^2] = Bias(f̂)^2 + Var(f̂)`.\n\n3. Combine the results.\n`E[(y - f̂)^2] = Bias(f̂(x))^2 + Var(f̂(x)) + σ^2`."
+}

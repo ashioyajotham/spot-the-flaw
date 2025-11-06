@@ -107,7 +107,7 @@ Select a bundled sample or upload a proof JSON to inspect stepwise labels, issue
 python src/main.py --proof data/sample_proofs/flawed/bias_variance.json
 ```
 
-Writes a structured analysis JSON for downstream evaluation.
+Writes a structured analysis JSON for downstream evaluation. (Module form is optional and not required.)
 
 ## Configuration
 - `GEMINI_API_KEY` (required for live analysis)
